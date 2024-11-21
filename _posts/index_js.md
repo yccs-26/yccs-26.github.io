@@ -1,0 +1,35 @@
+#### index.js의 역할
+1. ReactDom.render()로 React application 연결
+    <br>index.js는 React Component를 HTMl 문서의 특정 DOM 요소에 rendering한다.
+    <br>이 작업은 ReactDOM.render() 또는 createRoot()를 통해 이루어진다.
+    ```html
+    <!DOCTYPE HTML>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <!-- 여기서 width를 조정한다면 폭이 고정되고 그 이상 넘어가는 화면은 스크롤로 움직여야 함. width를 변경하는 것을 권장하지 않는다 -->
+            <title>React App</title>
+        </head>
+        <body>
+            <!-- <div id="root"></div> - React application이 mount 된다. -->
+            <div id="root"></div> 
+        </body>
+    </html>
+    ```
+    <br>
+    ```jsx
+    import React from 'react';
+    import ReactDOM from 'react-dom/clinet';
+    import App from './App'; //최상위 component
+
+    //React application을 #root에 rendering
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+    ```
+2. 전역 설정 및 초기화
+   - 전역 스타일 설정 : CSS 파일을 불러와 Application 전역에 설정
+   - 서비스 워커 등록 : PWA(Progressive Web App)를 지원하기 위한 서비스 워커 설정
+   - 상태 관리 초기화 : Redux, MobX, Context API 등의 상태 관리 초기화
+   - Router 설정 : App component를 BrowserRouter로 감싸서 Routing을 활성화
+3. 개발 도구 설정
